@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+
+  "name": "Etsy Viewer",
+  "description": "Views all your etsy activity.",
+  "version": "1.0",
+  "icons": {
+    "19": "favicon.png",
+    "48": "etsy48.png",
+    "128": "etsy128.png"
+  },
+  "permissions": [
+  	"tabs", 
+    "https://openapi.etsy.com/*",
+    "https://etsy.com/*",
+    "http://*/*",
+    "storage"
+  ],
+  "browser_action": {
+  	"default_popup": "index.html",
+  	"default_icon": "favicon.png"
+  },
+  "background" : {
+  	"page" : "index.html"
+  },
+  "content_scripts": [
+  	{
+  		"matches": ["http://*/*", "https://*/*"],
+  		"js": ["script.js", "jquery.js", "angular.js"]
+  	}
+  ],
+  "web_accessible_resources": ["*"]
+}

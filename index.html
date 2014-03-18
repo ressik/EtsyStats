@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<title>Etsy Viewer</title>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="chrome_ex_oauthsimple.js"></script>
+		<script type="text/javascript" src="chrome_ex_oauth.js"></script>
+		<script type="text/javascript" src="onload.js"></script>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<link type="text/css" rel="stylesheet" href="styles.css"></link>
+		<style>
+			.spinner {
+				width: 10px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 15px;
+				display: block;
+			}
+			body {
+				color: #EBEBEB;
+				background-color:#EBEBEB;
+				font-family: "Arial","Helvetica",sans-serif;
+			}
+			.totalViews {
+				width: 132px;
+				color: #00647C;
+				margin:auto;
+			}
+			.navLink{
+				color: white;
+				background-color: #CF5000;
+				border-radius: 5px;
+				padding: 5px;
+				text-align: center;
+				margin-left: 60px;
+				margin-right: 60px;
+			}
+			.navLink:hover{
+				background-color: #E05D0A;
+				cursor: hand;
+			}
+			.item {
+				background-color: #00647C;
+				border-radius: 10px;
+				margin-left: 5px;
+				margin-right: 5px;
+				padding-top: 10px;
+				padding-bottom: 5px;
+				margin-top: 10px;
+				padding-left: 15px;
+				padding-right: 15px;
+				line-height: 20px;
+			}
+			.title {
+				text-shadow: 2px 2px #0E0E0E;
+			}
+		</style>
+	</head>
+	<body ng-controller="etsyCtrl" style="width:300px;">
+		<div id="circular3dG" class="spinner">
+			<div id="circular3d_1G" class="circular3dG">
+			</div>
+			<div id="circular3d_2G" class="circular3dG">
+			</div>
+			<div id="circular3d_3G" class="circular3dG">
+			</div>
+			<div id="circular3d_4G" class="circular3dG">
+			</div>
+			<div id="circular3d_5G" class="circular3dG">
+			</div>
+			<div id="circular3d_6G" class="circular3dG">
+			</div>
+			<div id="circular3d_7G" class="circular3dG">
+			</div>
+			<div id="circular3d_8G" class="circular3dG">
+			</div>
+		</div>
+
+		<span id="listingInfo" class="listingInfo">
+			<div id="feedbackLink" ng-click="getFeedBack()" class="navLink title">View Feedback</div><p/>
+			<div class="totalViews"><b>Total Views:</b> {{totalViews()}}</div><p/>
+			<div class="item" ng-repeat="listing in listings">
+	          <span class="title">{{listing.title}}</span><p/>
+	          Views: {{listing.views}}<br/>
+	          Favorites: {{listing.num_favorers}}
+		    </div>
+	    </span>
+	    <span id="feedbackArea">
+	    	<div class="navLink title" id="back">Go Back</div><p/>
+	     	<div class="item" ng-repeat="fb in feedback">
+	     		{{fb.message}}<p/>
+	     		-{{fb.buyerName}}
+	     	</div>
+	    </span>
+	</body>
+</html>
